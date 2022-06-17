@@ -1,18 +1,21 @@
 package de.jensknipper.diexamples.framework.compiletime.calculator;
 
-import de.jensknipper.diexamples.common.PlusOperator;
+import de.jensknipper.diexamples.common.Operator;
+
+import javax.inject.Inject;
 
 public final class SetterCalculator {
-    private PlusOperator plusOperator;
+    private Operator operator;
 
-    public void setOperator(PlusOperator plusOperator) {
-        this.plusOperator = plusOperator;
+    @Inject
+    public void setOperator(Operator operator) {
+        this.operator = operator;
     }
 
     public int calculate(int a, int b) {
-        if (plusOperator == null) {
+        if (operator == null) {
             throw new RuntimeException("No operator specified");
         }
-        return plusOperator.calculate(a, b);
+        return operator.calculate(a, b);
     }
 }
