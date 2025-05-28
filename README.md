@@ -18,12 +18,8 @@ The following programmes are required on your machine:
 - adjust gitignore
 - proxy
   - lazy initialization
-  - switching
+  - switching dependencies
 - resolving cyclic dependencies
-- DIP
-  - fake
-  - mock
-    About
 
 ## Thanks
 I would like to thank and my employer OpenValue for allowing me to publish the results of my research.
