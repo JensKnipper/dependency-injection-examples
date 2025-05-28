@@ -16,9 +16,6 @@ The following programmes are required on your machine:
 ## Further improvements
 
 - adjust gitignore
-- proxy
-  - lazy initialization
-  - switching dependencies
 - resolving cyclic dependencies
 
 ## Thanks
