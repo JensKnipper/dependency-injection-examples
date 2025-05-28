@@ -1,4 +1,10 @@
 TODO  
-- add tests for all calculators
-- finish compiletime - use dagger? use koin?
 - adjust gitignore
+
+- proxy
+  - lazy initialization
+  - switching
+- resolving cyclic dependencies
+- DIP
+  - fake
+  - mock
