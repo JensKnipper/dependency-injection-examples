@@ -5,20 +5,25 @@ import de.jensknipper.diexamples.proxy.component.PlusOperator;
 import de.jensknipper.diexamples.proxy.component.MinusOperator;
 
 public class SwitchProxy implements Operator {
-    private final PlusOperator plusOperator = new PlusOperator();
-    private final MinusOperator minusOperator = new MinusOperator();
+    private final Operator first;
+    private final Operator second;
     
-    private boolean plusActive = false;
+    private boolean useFirst = false;
+
+    public SwitchProxy(Operator first, Operator second) {
+        this.first = first;
+        this.second = second;
+    }
 
     @Override
     public int calculate(int a, int b) {
-        if(plusActive) {
-            return plusOperator.calculate(a, b);
+        if(useFirst) {
+            return first.calculate(a, b);
         }
-        return minusOperator.calculate(a, b);
+        return second.calculate(a, b);
     }
 
-    public void setPlusActive(boolean plusActive) {
-        this.plusActive = plusActive;
+    public void setUseFirst(boolean useFirst) {
+        this.useFirst = useFirst;
     }
 }

@@ -1,7 +1,9 @@
 package de.jensknipper.diexamples.proxy;
 
 import de.jensknipper.diexamples.proxy.component.Calculator;
+import de.jensknipper.diexamples.proxy.component.MinusOperator;
 import de.jensknipper.diexamples.proxy.component.Operator;
+import de.jensknipper.diexamples.proxy.component.PlusOperator;
 import de.jensknipper.diexamples.proxy.proxy.LazyProxy;
 import de.jensknipper.diexamples.proxy.proxy.SwitchProxy;
 
@@ -14,24 +16,28 @@ public class Proxy {
     }
 
     private static void lazyProxy() {
-        Operator operator = new LazyProxy();
+        Operator operator = new LazyProxy(PlusOperator::new);
         Calculator calculator = new Calculator(operator);
 
         System.out.println("Lazy Proxy: " + calculator.calculate(1, 2));
     }
 
     private static void switchProxyInactive() {
-        Operator operator = new SwitchProxy();
+        Operator first = new PlusOperator();
+        Operator second = new MinusOperator();
+        Operator operator = new SwitchProxy(first, second);
         Calculator calculator = new Calculator(operator);
 
-        System.out.println("Lazy Proxy inactive: " + calculator.calculate(4, 1));
+        System.out.println("Switch Proxy inactive: " + calculator.calculate(4, 1));
     }
 
     private static void switchProxyActive() {
-        SwitchProxy operator = new SwitchProxy();
+        Operator first = new PlusOperator();
+        Operator second = new MinusOperator();
+        SwitchProxy operator = new SwitchProxy(first, second);
         Calculator calculator = new Calculator(operator);
-        operator.setPlusActive(true);
+        operator.setUseFirst(true);
 
-        System.out.println("Lazy Proxy active: " + calculator.calculate(1, 2));
+        System.out.println("Switch Proxy active: " + calculator.calculate(1, 2));
     }
 }
