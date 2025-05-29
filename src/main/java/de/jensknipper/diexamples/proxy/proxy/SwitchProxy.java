@@ -1,8 +1,6 @@
 package de.jensknipper.diexamples.proxy.proxy;
 
 import de.jensknipper.diexamples.proxy.component.Operator;
-import de.jensknipper.diexamples.proxy.component.PlusOperator;
-import de.jensknipper.diexamples.proxy.component.MinusOperator;
 
 public class SwitchProxy implements Operator {
     private final Operator first;
